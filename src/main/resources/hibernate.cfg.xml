@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+
+        <!-- Database Connection Settings -->
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/mydb?useSSL=false&amp;serverTimezone=UTC</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">secret</property>
+
+        <!-- JDBC Connection Pool Settings (Built-in C3P0 or Hibernate connection pool) -->
+        <property name="hibernate.c3p0.min_size">5</property>
+        <property name="hibernate.c3p0.max_size">20</property>
+        <property name="hibernate.c3p0.timeout">1800</property>
+        <property name="hibernate.c3p0.max_statements">50</property>
+
+        <!-- SQL Dialect (Optional: Hibernate auto-detects dialect for modern databases) -->
+        <!-- <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property> -->
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+        <property name="hibernate.highlight_sql">true</property>
+
+        <!-- Drop and re-create the database schema on startup, or 'update' -->
+        <property name="jakarta.persistence.schema-generation.database.action">update</property>
+
+        <!-- Entity Mappings (Register your annotated entity classes) -->
+        <mapping class="com.example.entity.User" />
+        <mapping class="com.example.entity.Book" />
+
+    </session-factory>
+</hibernate-configuration>
