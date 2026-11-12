@@ -24,7 +24,7 @@ public class ActorController {
     public ResponseEntity<Actor> getActorById(@PathVariable Long id) {
         return repository.findById(id)
                 .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+                .orElseThrow(() -> new RuntimeException("Actor not found"));
     }
 
     // POST: add an actor
